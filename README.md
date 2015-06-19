@@ -2,10 +2,17 @@
 
 # mu-archlinux
 
-Arch Linux package for Kreogist µ
+Arch Linux package for [Kreogist µ][project-page].
 
-Arch User Repository Link : [https://aur.archlinux.org/packages/kreogist-mu/](https://aur.archlinux.org/packages/kreogist-mu/)
+This version is pre-compiled by me, and will be up-to-date as µ's update.
 
-Project page : [https://kreogist.github.io/Mu/](https://kreogist.github.io/Mu/)
+---
+
+AUR Link : [https://aur.archlinux.org/packages/kreogist-mu/](https://aur.archlinux.org/packages/kreogist-mu/)
+
+Project page : [https://kreogist.github.io/Mu/][project-page]
 
 Github Repository : [https://github.com/Kreogist/Mu/](https://github.com/Kreogist/Mu/)
+
+[project-page]:https://kreogist.github.io/Mu/
+
