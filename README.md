@@ -1,9 +1,8 @@
-![version](https://img.shields.io/badge/version-0.8_unstable-FFB751.svg?style=flat-square) ![pkgrel](https://img.shields.io/badge/Package_Release-8-9D51FF.svg?style=flat-square) 
+![version](https://img.shields.io/badge/version-0.8-FFB751.svg?style=flat-square) ![pkgrel](https://img.shields.io/badge/Package_Release-9-9D51FF.svg?style=flat-square) 
 
 # mu-archlinux
 
 Arch Linux package for Kreogist µ
-
 
 Arch User Repository Link : [https://aur.archlinux.org/packages/kreogist-mu/](https://aur.archlinux.org/packages/kreogist-mu/)
 
