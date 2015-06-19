@@ -5,7 +5,7 @@
 Arch Linux package for Kreogist µ
 
 
-Arch User Repository Link : [https://aur.archlinux.org/packages/kreogist-mu/](https://aur.archlinux.org/packages/kreogist-mu/)
+Arch User Repository Link : [https://aur4.archlinux.org/packages/kreogist-mu/](https://aur4.archlinux.org/packages/kreogist-mu/)
 
 Project page : [https://kreogist.github.io/Mu/](https://kreogist.github.io/Mu/)
 

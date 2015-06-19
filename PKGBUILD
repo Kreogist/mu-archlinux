@@ -1,7 +1,7 @@
 # Maintainer: Frantic1048 <dev_frantic1048@163.com>
 
 pkgname=kreogist-mu
-pkgver='0.8(unstable)'
+pkgver='0.8'
 pkgrel=8
 epoch=0
 pkgdesc="Fantastic cross-platform music manager"
