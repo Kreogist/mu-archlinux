@@ -1,4 +1,4 @@
-# Maintainer: Frantic1048 <dev_frantic1048@163.com>
+# Maintainer: Frantic1048 <dev_frantic1048 ato 163 doto com>
 
 pkgname=kreogist-mu
 pkgver='0.8'
