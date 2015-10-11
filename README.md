@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/Version-0.8-FFB751.svg?style=flat-square) ![pkgrel](https://img.shields.io/badge/Architecture-x86__64-51C8FF.svg?style=flat-square)
+![version](https://img.shields.io/badge/Version-0.9-FFB751.svg?style=flat-square) ![pkgrel](https://img.shields.io/badge/Architecture-x86__64-51C8FF.svg?style=flat-square)
 
 # mu-archlinux
 
