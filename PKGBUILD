@@ -23,7 +23,7 @@ optdepends=(
 )
 changelog=$pkgname.changelog
 source=("https://github.com/frantic1048/mu-archlinux/releases/download/$pkgver/$pkgname-$pkgver-$arch.7z")
-md5sums=('ef52dc72deacb1286f5ad221dfeb24c2')
+md5sums=('69502d653bb9634d308949513e43725b')
 
 package() {
   cd "$pkgname-$pkgver-$arch"
