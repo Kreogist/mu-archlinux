@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/Version-0.9-FF5174.svg?style=flat-square) ![pkgrel](https://img.shields.io/badge/Architecture-x86__64-51C8FF.svg?style=flat-square)
+![version](https://img.shields.io/badge/Version-0.9.1-FF5174.svg?style=flat-square) ![pkgrel](https://img.shields.io/badge/Architecture-x86__64-51C8FF.svg?style=flat-square)
 ![downloads](https://img.shields.io/github/downloads/frantic1048/mu-archlinux/latest/total.svg?style=flat-square)
 
 # mu-archlinux
