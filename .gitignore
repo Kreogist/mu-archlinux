@@ -1,13 +1,14 @@
-#dolphin
+# dolphin
 .directory
 
-#pkg building files
+# package building files
 
 *.7z
 *.tar.xz
 *.tar.gz
-
 .SRCINFO
-
 src/
 pkg/
+
+# travis build directory
+build/

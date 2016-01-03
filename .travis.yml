@@ -1,0 +1,22 @@
+# Travis CI auto compiling
+env:
+  - secure: "eazLQo/MJOrgxEnQxHpuHR+MSbjUFYZTmmh5YH0K/SfE+M4q2zAMS94PGzbmxvJFOKxcCoqmMkpHyOh9npsAg60cpe2hw8/5I5De5V6dezbMhChEfJE3Fjq9g0N6o+Zaa/Ou1rlGijv//ZS3ShNQdkAxMXVzwDSNPOziOu2Hd9JS5hRPBtJEva6M617Q9fhl9Jb+68Ni0gABDLhhnZi/O+2w/FMyrVYx4XAxZJoOZVKHdbiY5igT5/uEtPft3I59S+nbni1wZMFpAOkBQomw5Yk8Omn2Jo34babxn2rSgCrwiLNKbDL9gze9tsWjYBRRD4F/Qpyzpm35cl4xgv7P+bZckLSVrGZFfCvtdvepXJ18eN6Vn+KT2Vyrb5GaP2Ex7tDtHphObMw7IpQuYTmiWpLiZzotXast5RHMdf3O7TYN94ptRzWEWRAddjXBUumIVst54XSHQ1f4aEqw2ydYyWkxyo44eu4v96CqI3lijFGm8/VZ7+UzWNLAh9x21CzOLKccfl5M+klvsmimlmcX/qtcsztKqxo6w4OnAjAkhU+Y1KhklTuhqwBr5gj7ruZf203MfFJDDKBR9P8JtpOySJb5rWMT6fZGzc2dmGOsqWnh084JosluBtOKfCV5FV9hHkVC3Uga1xK46klf8PkNNinUj5YtiQJbC6qZ4diua/4="
+language: cpp
+compiler: gcc
+branches:
+  only:
+    - master
+install:
+  - . install.sh
+script:
+  - . build.sh
+before_deploy:
+  - . before_deploy.sh
+deploy:
+  provider: releases
+  api_key: "$GH_TOKEN"
+  file: "pkg/kreogist-mu-$PKGVER-$PKGREL-$PKGARCH.tar.gz"
+  skip_cleanup: true
+  on:
+    tags: false
+    all_branches: true

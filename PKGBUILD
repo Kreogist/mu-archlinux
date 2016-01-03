@@ -1,4 +1,4 @@
-# Maintainer: Frantic1048 <Archer@frantic1048.com>
+# Maintainer: Frantic1048 <archer@frantic1048.com>
 
 pkgname=kreogist-mu
 pkgver='0.9.2'
@@ -27,10 +27,17 @@ md5sums=('abbe752b7e9a608cbe52933267fefba7')
 
 package() {
   cd "$pkgname-$pkgver-$arch"
-  install -d  "${pkgdir}/usr/bin/"
-  install -m=775 $pkgname "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
-  install -m=664 $pkgname.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
-  install -d "${pkgdir}/usr/share/applications/"
-  install -m=664 $pkgname.desktop "${pkgdir}/usr/share/applications/"
+  install -d  "$pkgdir/usr/bin/"
+  install -m=775 "bin/$pkgname" "$pkgdir/usr/bin"
+
+  # i18n files
+  # https://github.com/Kreogist/Mu/issues/17#issuecomment-164236195
+  indtall -d "$pkgdir/usr/share/Kreogist/mu/Language"
+  install -m=664 i18n/*.qm "$pkgdir/usr/share/Kreogist/mu/Language"
+
+  install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+  install -m=664 "other/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
+
+  install -d "$pkgdir/usr/share/applications/"
+  install -m=664 "other/$pkgname.desktop" "$pkgdir/usr/share/applications/"
 }
