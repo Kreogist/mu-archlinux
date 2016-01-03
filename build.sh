@@ -55,5 +55,9 @@ cd $ROOT
   sed "s/^md5sums=.*$/md5sums=('${PKGMD5}')/" \
 >PKGBUILD
 
-echo updated PKGBUILD
-echo "$OLDPKGVER-$OLDPKGREL -> $PKGVER-$PKGREL"
+<README.md \
+  sed "s/Version-.*.svg/Version-${PKGVER}:${PKGREL}-FF5174.svg/" \
+>README.md
+
+echo "updated PKGBUILD"
+echo "  $OLDPKGVER:$OLDPKGREL -> $PKGVER:$PKGREL"
