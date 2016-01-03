@@ -1,6 +1,4 @@
 pwd
-# sudo ln -s --force /usr/bin/g++-5 /usr/bin/g++
-g++ --version
 mkdir src
 mkdir build
 mkdir pkg
