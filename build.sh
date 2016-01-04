@@ -9,10 +9,7 @@ export PKGARCH=$(<PKGBUILD grep arch= | cut -d"=" -f 2 | sed "s/[\"'()]//g")
 export ROOT=$(pwd)
 
 cd $ROOT/src
-git clone --depth=10 https://github.com/Kreogist/Mu.git
-cd Mu
-export MUVER=`git tag | tail -n 1`
-git checkout $MUVER
+export MUVER=$(curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/Kreogist/Mu/git/refs/tags | sed -e "1 i (" -e "$ a ).pop().ref" | xargs -0 node -p | sed -e "s/refs\/tags\///")
 
 # compute new pkgver, pkgrel
 if [[ $PKGVER = $MUVER ]]
@@ -28,37 +25,29 @@ else
 fi
 
 cd $ROOT/build
-qmake "CONFIG+=release" $ROOT/src/Mu/mu.pro
-tree ./ -I src/
-make
-tree ./ -I src/
-echo finished build Mu-v$MUVER
+# qmake "CONFIG+=release" $ROOT/src/Mu/mu.pro
+# make
+# echo finished build Mu-v$MUVER
 
 cd $ROOT/pkg
 mkdir kreogist-mu
 cd kreogist-mu
-mkdir bin
-mkdir i18n
 mkdir other
-cp $ROOT/build/bin/mu bin/$PKGNAME
-cp $ROOT/build/bin/*.qm i18n/
 cp $ROOT/$PKGNAME.desktop other/
 cp $ROOT/$PKGNAME.png other/
 cd ..
 tar -zcvf $PKGNAME.tar.gz $PKGNAME
-export PKGMD5=$(md5sum $PKGNAME.tar.gz | cut -d" " -f 1)
-tree ./
+export PKGSHASUM=$(sha224sum $PKGNAME.tar.gz | cut -d" " -f 1)
 
 cd $ROOT
 sed -i \
   -e "s/^pkgver=.*$/pkgver='${PKGVER}'/" \
   -e "s/^pkgrel=.*$/pkgrel=${PKGREL}/" \
-  -e "s/^md5sums=.*$/md5sums=('${PKGMD5}')/" \
+  -e "s/^sha224sums=.*$/sha224sums=('${PKGSHASUM}')/" \
 PKGBUILD
 
 sed -i \
   -e  "s/Version-.*.svg/Version-${PKGVER}:${PKGREL}-FF5174.svg/" \
 README.md
 
-echo "updated PKGBUILD"
-echo "  $OLDPKGVER:$OLDPKGREL -> $PKGVER:$PKGREL"
+echo "updated PKGBUILD $OLDPKGVER:$OLDPKGREL -> $PKGVER:$PKGREL"

@@ -1,7 +1,7 @@
 # Maintainer: Frantic1048 <archer@frantic1048.com>
 
 pkgname=kreogist-mu
-pkgver='0.9.2'
+pkgver='0.9.3'
 pkgrel=1
 epoch=1
 pkgdesc="Fantastic cross-platform music manager.based on Qt5"
@@ -21,18 +21,25 @@ optdepends=(
   'gst-plugins-bad: bad plugin libraries'
   'gst-plugins-ugly: ugly plugin libraries'
 )
+makedepend=(
+
+)
+
 changelog=$pkgname.changelog
-source=("https://github.com/frantic1048/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname.tar.gz")
-md5sums=('abbe752b7e9a608cbe52933267fefba7')
+source=(
+  "https://github.com/Kreogist/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname.tar.gz"
+  "git+https://github.com/Kreogist/Mu.git#tag=$pkgver"
+)
+sha224sums=('SKIP')
 
 package() {
-  cd "$pkgname-$pkgver-$arch"
+  cd "$pkgname"
   install -d  "$pkgdir/usr/bin/"
   install -m=775 "bin/$pkgname" "$pkgdir/usr/bin"
 
   # i18n files
   # https://github.com/Kreogist/Mu/issues/17#issuecomment-164236195
-  indtall -d "$pkgdir/usr/share/Kreogist/mu/Language"
+  install -d "$pkgdir/usr/share/Kreogist/mu/Language"
   install -m=664 i18n/*.qm "$pkgdir/usr/share/Kreogist/mu/Language"
 
   install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"

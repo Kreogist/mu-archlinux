@@ -1,43 +1,13 @@
-# Travis CI auto compiling
+# update PKGBUILD and package related files
+# to this repo's master branch
+sudo: false
 env:
-  - secure: "eazLQo/MJOrgxEnQxHpuHR+MSbjUFYZTmmh5YH0K/SfE+M4q2zAMS94PGzbmxvJFOKxcCoqmMkpHyOh9npsAg60cpe2hw8/5I5De5V6dezbMhChEfJE3Fjq9g0N6o+Zaa/Ou1rlGijv//ZS3ShNQdkAxMXVzwDSNPOziOu2Hd9JS5hRPBtJEva6M617Q9fhl9Jb+68Ni0gABDLhhnZi/O+2w/FMyrVYx4XAxZJoOZVKHdbiY5igT5/uEtPft3I59S+nbni1wZMFpAOkBQomw5Yk8Omn2Jo34babxn2rSgCrwiLNKbDL9gze9tsWjYBRRD4F/Qpyzpm35cl4xgv7P+bZckLSVrGZFfCvtdvepXJ18eN6Vn+KT2Vyrb5GaP2Ex7tDtHphObMw7IpQuYTmiWpLiZzotXast5RHMdf3O7TYN94ptRzWEWRAddjXBUumIVst54XSHQ1f4aEqw2ydYyWkxyo44eu4v96CqI3lijFGm8/VZ7+UzWNLAh9x21CzOLKccfl5M+klvsmimlmcX/qtcsztKqxo6w4OnAjAkhU+Y1KhklTuhqwBr5gj7ruZf203MfFJDDKBR9P8JtpOySJb5rWMT6fZGzc2dmGOsqWnh084JosluBtOKfCV5FV9hHkVC3Uga1xK46klf8PkNNinUj5YtiQJbC6qZ4diua/4="
-language: cpp
-compiler: gcc
+  - secure: "tI/GcVe5aQF1zbv7TbBlRZiDNH/BoG2k06Hc+cRFlFHsEHiqr9c9kM/4VU1yyZ5dOeMuhVNg7z14mwbdL+E+GV3GAwnnQpCPHtWYgc8lkJdTMxAGivdgGOy9v21w/0AuJpGsoudB1PGO6U00dXHZRTdSvCo+VECh0A7YAcDaGE3TP+9AtXI5McfbqnkAjm4CHCbfVNkDMiLKyONdW97cnQpFwPm1Kd7YQPZgJDN4ZOAdPceAELVETO7o5u8zK5pIoTmMKqOVm3kSutT+77n/rOGx921WiFhzDzh2oCvhBl7AL3y8+ehYkm3/a3YS5OUcnUu+oYsQFb3DhMnwSMv8lyCF34FknAxTI/x/HzmrlvPmjcB0sRIYoomz0asuFxhH5fT7OtB5lVLBE0fvGbo2IUGL3ZwU36S2DU4mLiL6lTD3AqC05ia69E6Yt3dh6LUhxYpqS05q/wHZCl1EUwbIijLzW0yWos73csXtHNY//lln3BZbgXF166JUNFg0xuM8xrOVkfRi5n8kwYnaVFfRJcmAQz1hykXXXSsJj1VA7mo8Eg0crZTaDcZZAet1Kf4qQS9lHGLxzl8urKB2e+c/ShTIMqQOPXeJKFwozRVZlndWIdTDYRDE+PB0YnqbT5KtInXkE8eEXLtDcg2XLLwnuZGTtpsu5uPIHLUJ4spa7qI="
 branches:
   only:
     - release
 install:
-  - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu trusty universe"
-  - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu trusty main"
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  - sudo add-apt-repository -y ppa:gstreamer-developers/ppa
-  - sudo apt-get -qq update
-  - >-
-    yes '' | sudo apt-get -qq install
-    qdbus
-    qmlscene
-    qt5-default
-    qt5-qmake
-    qtbase5-dev-tools
-    qtchooser
-    qtdeclarative5-dev
-    xbitmaps
-    xterm
-    libqt5svg5-dev
-    qttools5-dev
-    qttools5-dev-tools
-    qtscript5-dev
-    qtdeclarative5-folderlistmodel-plugin
-    qtdeclarative5-controls-plugin
-    gstreamer1.0*
-    libavformat-dev
-    libavcodec-dev
-    libavutil-dev
-    libcloog-ppl0
-    tree
-    g++-5
-  - sudo ln -s --force /usr/bin/g++-5 /usr/bin/g++
-  - g++ --version
+    - true
 script:
   - git fetch origin master:master
   - git checkout master
