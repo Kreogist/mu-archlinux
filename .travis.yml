@@ -49,7 +49,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: "$GH_TOKEN"
-  file: "nothing/pkg/kreogist-mu.tar.gz"
+  file: "pkg/kreogist-mu.tar.gz"
   skip_cleanup: true
   on:
     branch: release
