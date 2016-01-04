@@ -5,7 +5,7 @@ language: cpp
 compiler: gcc
 branches:
   only:
-    - master
+    - release
 install:
   - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu trusty universe"
   - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu trusty main"
@@ -39,6 +39,7 @@ install:
   - sudo ln -s --force /usr/bin/g++-5 /usr/bin/g++
   - g++ --version
 script:
+  - git checkout master
   - chmod +x ./build.sh
   - ./build.sh
 before_deploy:
@@ -47,8 +48,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: "$GH_TOKEN"
-  file: "pkg/kreogist-mu.tar.gz"
+  file: "nothing/pkg/kreogist-mu.tar.gz"
   skip_cleanup: true
   on:
-    tags: false
-    all_branches: true
+    branch: release

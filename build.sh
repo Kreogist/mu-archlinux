@@ -53,11 +53,13 @@ cd $ROOT
 <PKGBUILD \
   sed "s/^pkgver=.*$/pkgver='${PKGVER}'/" |
   sed "s/^pkgrel=.*$/pkgrel=${PKGREL}/" |
-  sed "s/^md5sums=.*$/md5sums=('${PKGMD5}')/" \
+  sed "s/^md5sums=.*$/md5sums=('${PKGMD5}')/" |
+  cat \
 >PKGBUILD
 
 <README.md \
-  sed "s/Version-.*.svg/Version-${PKGVER}:${PKGREL}-FF5174.svg/" \
+  sed "s/Version-.*.svg/Version-${PKGVER}:${PKGREL}-FF5174.svg/" |
+  cat \
 >README.md
 
 echo "updated PKGBUILD"
