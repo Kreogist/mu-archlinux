@@ -2,6 +2,7 @@ pwd
 mkdir src
 mkdir build
 mkdir pkg
+export PKGNAME=kreogist-mu
 export OLDPKGVER=$(<PKGBUILD grep pkgver= | cut -d"=" -f 2 | sed "s/[\"']//g")
 export OLDPKGREL=$(<PKGBUILD grep pkgrel= | cut -d"=" -f 2 | sed "s/[\"']//g")
 export PKGARCH=$(<PKGBUILD grep arch= | cut -d"=" -f 2 | sed "s/[\"'()]//g")
@@ -34,18 +35,18 @@ tree ./ -I src/
 echo finished build Mu-v$MUVER
 
 cd $ROOT/pkg
-mkdir kreogist-mu-$PKGVER-$PKGREL-$PKGARCH
-cd kreogist-mu-$PKGVER-$PKGREL-$PKGARCH
+mkdir kreogist-mu
+cd kreogist-mu
 mkdir bin
 mkdir i18n
 mkdir other
 cp $ROOT/build/bin/mu bin/$PKGNAME
 cp $ROOT/build/bin/*.qm i18n/
-cp $ROOT/PKGNAME.desktop other/
-cp $ROOT/PKGNAME.png other/
+cp $ROOT/$PKGNAME.desktop other/
+cp $ROOT/$PKGNAME.png other/
 cd ..
-tar -zcvf kreogist-mu-$PKGVER-$PKGREL-$PKGARCH.tar.gz kreogist-mu-$PKGVER-$PKGREL-$PKGARCH
-export PKGMD5=$(md5sum kreogist-mu-$PKGVER-$PKGREL-$PKGARCH.tar.gz | cut -d" " -f 1)
+tar -zcvf $PKGNAME.tar.gz $PKGNAME
+export PKGMD5=$(md5sum $PKGNAME.tar.gz | cut -d" " -f 1)
 tree ./
 
 cd $ROOT

@@ -22,7 +22,7 @@ optdepends=(
   'gst-plugins-ugly: ugly plugin libraries'
 )
 changelog=$pkgname.changelog
-source=("https://github.com/frantic1048/mu-archlinux/releases/download/$pkgver/$pkgname-$pkgver-$arch.7z")
+source=("https://github.com/frantic1048/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname.tar.gz")
 md5sums=('abbe752b7e9a608cbe52933267fefba7')
 
 package() {
