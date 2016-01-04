@@ -50,17 +50,15 @@ export PKGMD5=$(md5sum $PKGNAME.tar.gz | cut -d" " -f 1)
 tree ./
 
 cd $ROOT
-<PKGBUILD \
-  sed "s/^pkgver=.*$/pkgver='${PKGVER}'/" |
-  sed "s/^pkgrel=.*$/pkgrel=${PKGREL}/" |
-  sed "s/^md5sums=.*$/md5sums=('${PKGMD5}')/" |
-  cat \
->PKGBUILD
+sed -i \
+  -e "s/^pkgver=.*$/pkgver='${PKGVER}'/" \
+  -e "s/^pkgrel=.*$/pkgrel=${PKGREL}/" \
+  -e "s/^md5sums=.*$/md5sums=('${PKGMD5}')/" \
+PKGBUILD
 
-<README.md \
-  sed "s/Version-.*.svg/Version-${PKGVER}:${PKGREL}-FF5174.svg/" |
-  cat \
->README.md
+sed -i \
+  -e  "s/Version-.*.svg/Version-${PKGVER}:${PKGREL}-FF5174.svg/" \
+README.md
 
 echo "updated PKGBUILD"
 echo "  $OLDPKGVER:$OLDPKGREL -> $PKGVER:$PKGREL"
