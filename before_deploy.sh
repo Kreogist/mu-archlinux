@@ -11,4 +11,4 @@ git commit -m "Torabisu: updated kreogist-mu PKGBUILD to ${PKGVER}:${PKGREL}"
 git tag "$PKGVER.$PKGREL"
 git branch
 git tag
-git push --quiet "https://${GH_TOKEN}@github.com/Kreogist/mu-archlinux.git"
+git push --quiet https://$GH_TOKEN@github.com/Kreogist/mu-archlinux.git
