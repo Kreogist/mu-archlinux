@@ -48,13 +48,17 @@ build() {
 
 package() {
   # excecutable
-  install -Dm775 $srcdir/Mu-build/bin/mu $pkgdir/usr/bin/kreogist-mu
+  mkdir -p $pkgdir/usr/bin/kreogist-mu
+  install -m775 $srcdir/Mu-build/bin/mu $pkgdir/usr/bin/kreogist-mu
 
   # i18n files
   # https://github.com/Kreogist/Mu/issues/17#issuecomment-164236195
-  install -Dm664 $srcdir/Mu-build/bin/*.qm $pkgdir/usr/share/Kreogist/mu/Language
+  mkdir -p $pkgdir/usr/share/Kreogist/mu/Language/
+  install -m664 $srcdir/Mu-build/bin/*.qm $pkgdir/usr/share/Kreogist/mu/Language/
 
   # static resource
-  install -Dm664 $srcdir/$pkgname-resource/$pkgname.png $pkgdir/usr/share/icons/hicolor/512x512/apps/
-  install -Dm664 $srcdir/$pkgname-resource/$pkgname.desktop $pkgdir/usr/share/applications/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/apps/
+  install -m664 $srcdir/$pkgname-resource/$pkgname.png $pkgdir/usr/share/icons/hicolor/512x512/apps/
+  mkdir -p $pkgdir/usr/share/applications/
+  install -m664 $srcdir/$pkgname-resource/$pkgname.desktop $pkgdir/usr/share/applications/
 }
