@@ -15,36 +15,46 @@ depends=(
   'ffmpeg'
   'phonon-qt5'
   'gst-libav'
-  'gstreamer0.10-ffmpeg')
+  'gstreamer0.10-ffmpeg'
+)
+
 optdepends=(
   'gst-plugins-good: good plugin libraries'
   'gst-plugins-bad: bad plugin libraries'
   'gst-plugins-ugly: ugly plugin libraries'
 )
-makedepend=(
 
+makedepends=(
+  'git'
+  'gcc'
+  'qt5-tools'
 )
 
 changelog=$pkgname.changelog
+
 source=(
-  "https://github.com/Kreogist/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname.tar.gz"
+  "https://github.com/Kreogist/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname-resource.tar.gz"
   "git+https://github.com/Kreogist/Mu.git#tag=$pkgver"
 )
-sha224sums=('SKIP')
+
+sha224sums=('SKIP' 'SKIP')
+
+build() {
+  mkdir -p $srcdir/Mu-build
+  cd $srcdir/Mu-build
+  qmake "CONFIG+=release" $srcdir/Mu/mu.pro
+  make
+}
 
 package() {
-  cd "$pkgname"
-  install -d  "$pkgdir/usr/bin/"
-  install -m=775 "bin/$pkgname" "$pkgdir/usr/bin"
+  # excecutable
+  install -Dm775 $srcdir/Mu-build/bin/mu $pkgdir/usr/bin/kreogist-mu
 
   # i18n files
   # https://github.com/Kreogist/Mu/issues/17#issuecomment-164236195
-  install -d "$pkgdir/usr/share/Kreogist/mu/Language"
-  install -m=664 i18n/*.qm "$pkgdir/usr/share/Kreogist/mu/Language"
+  install -Dm664 $srcdir/Mu-build/bin/*.qm $pkgdir/usr/share/Kreogist/mu/Language
 
-  install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-  install -m=664 "other/$pkgname.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
-
-  install -d "$pkgdir/usr/share/applications/"
-  install -m=664 "other/$pkgname.desktop" "$pkgdir/usr/share/applications/"
+  # static resource
+  install -Dm664 $srcdir/$pkgname-resource/$pkgname.png $pkgdir/usr/share/icons/hicolor/512x512/apps/
+  install -Dm664 $srcdir/$pkgname-resource/$pkgname.desktop $pkgdir/usr/share/applications/
 }

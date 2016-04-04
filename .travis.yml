@@ -1,8 +1,6 @@
 # update PKGBUILD and package related files
 # to this repo's master branch
 sudo: false
-env:
-  - secure: "tI/GcVe5aQF1zbv7TbBlRZiDNH/BoG2k06Hc+cRFlFHsEHiqr9c9kM/4VU1yyZ5dOeMuhVNg7z14mwbdL+E+GV3GAwnnQpCPHtWYgc8lkJdTMxAGivdgGOy9v21w/0AuJpGsoudB1PGO6U00dXHZRTdSvCo+VECh0A7YAcDaGE3TP+9AtXI5McfbqnkAjm4CHCbfVNkDMiLKyONdW97cnQpFwPm1Kd7YQPZgJDN4ZOAdPceAELVETO7o5u8zK5pIoTmMKqOVm3kSutT+77n/rOGx921WiFhzDzh2oCvhBl7AL3y8+ehYkm3/a3YS5OUcnUu+oYsQFb3DhMnwSMv8lyCF34FknAxTI/x/HzmrlvPmjcB0sRIYoomz0asuFxhH5fT7OtB5lVLBE0fvGbo2IUGL3ZwU36S2DU4mLiL6lTD3AqC05ia69E6Yt3dh6LUhxYpqS05q/wHZCl1EUwbIijLzW0yWos73csXtHNY//lln3BZbgXF166JUNFg0xuM8xrOVkfRi5n8kwYnaVFfRJcmAQz1hykXXXSsJj1VA7mo8Eg0crZTaDcZZAet1Kf4qQS9lHGLxzl8urKB2e+c/ShTIMqQOPXeJKFwozRVZlndWIdTDYRDE+PB0YnqbT5KtInXkE8eEXLtDcg2XLLwnuZGTtpsu5uPIHLUJ4spa7qI="
 branches:
   only:
     - release
@@ -11,15 +9,13 @@ install:
 script:
   - git fetch origin master:master
   - git checkout master
-  - chmod +x ./build.sh
   - ./build.sh
 before_deploy:
-  - chmod +x ./before_deploy.sh
   - ./before_deploy.sh
 deploy:
   provider: releases
   api_key: "$GH_TOKEN"
-  file: "pkg/kreogist-mu.tar.gz"
+  file: "pkg/kreogist-mu-resource.tar.gz"
   skip_cleanup: true
   on:
     branch: release
