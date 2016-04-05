@@ -32,8 +32,6 @@ makedepends=(
   'qt5-tools'
 )
 
-changelog=$pkgname.changelog
-
 source=(
   "https://github.com/Kreogist/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname-resource.tar.gz"
   "https://codeload.github.com/Kreogist/Mu/tar.gz/$pkgver"
