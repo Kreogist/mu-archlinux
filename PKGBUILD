@@ -32,8 +32,6 @@ makedepends=(
   'qt5-tools'
 )
 
-changelog=$pkgname.changelog
-
 source=(
   "https://github.com/Kreogist/mu-archlinux/releases/download/$pkgver.$pkgrel/$pkgname-resource.tar.gz"
   "https://codeload.github.com/Kreogist/Mu/tar.gz/$pkgver"
@@ -60,7 +58,13 @@ package() {
   # i18n files
   # https://github.com/Kreogist/Mu/issues/17#issuecomment-164236195
   install -d $pkgdir/usr/share/Kreogist/mu/Language/
-  install -m664 $srcdir/Mu-build/bin/*.qm $pkgdir/usr/share/Kreogist/mu/Language/
+  for f in $srcdir/Mu-build/bin/*.qm
+  do
+    baseName=$(basename $f)
+    languageName="${baseName%.qm}"
+    install -d $pkgdir/usr/share/Kreogist/mu/Language/$languageName/
+    install -m664 $f $pkgdir/usr/share/Kreogist/mu/Language/$languageName/
+  done
 
   # static resource
   install -d $pkgdir/usr/share/icons/hicolor/512x512/apps/
