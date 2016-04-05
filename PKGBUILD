@@ -5,10 +5,11 @@ pkgver='0.9.9.1'
 pkgrel=1
 epoch=1
 pkgdesc="Fantastic cross-platform music manager.based on Qt5"
-changelog="kreogist-mu.changelog"
 arch=('x86_64')
 url="https://kreogist.github.io/Mu/"
 license=('GPL')
+changelog="$pkgname.changelog"
+install="$pkgname.install"
 depends=(
   'pulseaudio'
   'ffmpeg'
@@ -42,8 +43,6 @@ sha224sums=(
   '1f0247a0f08cffc062f80ca68fa5e24c64c16d559aade32524d66cc3'
   '2a9d7ee064b5d8623691a0bcd0047ae876e7aaaab77bdfad4e9e23fe'
 )
-
-install=$pkgname.install
 
 build() {
   mkdir -p $srcdir/Mu-build
