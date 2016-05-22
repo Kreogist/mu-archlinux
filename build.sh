@@ -7,7 +7,7 @@ PKGARCH=$(<PKGBUILD grep arch= | cut -d"=" -f 2 | sed "s/[\"'()]//g")
 ROOT=$(pwd)
 
 # get latest Mu's version on github
-MUVER=$(curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/Kreogist/Mu/git/refs/tags | sed -e "1 i (" -e "$ a ).pop().ref" | xargs -0 node -p | sed -e "s/refs\/tags\///")
+MUVER=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/Kreogist/Mu/git/refs/tags | sed -e "1 i (" -e "$ a ).pop().ref" | xargs -0 node -p | sed -e "s/refs\/tags\///")
 
 # compute new pkgver, pkgrel
 if [[ $OLDPKGVER = $MUVER ]]
