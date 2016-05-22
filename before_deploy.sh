@@ -1,6 +1,6 @@
-export PKGNAME=kreogist-mu
-export PKGVER=$(<PKGBUILD grep pkgver= | cut -d"=" -f 2 | sed "s/[\"']//g")
-export PKGREL=$(<PKGBUILD grep pkgrel= | cut -d"=" -f 2 | sed "s/[\"']//g")
+PKGNAME=kreogist-mu
+PKGVER=$(<PKGBUILD grep pkgver= | cut -d"=" -f 2 | sed "s/[\"']//g")
+PKGREL=$(<PKGBUILD grep pkgrel= | cut -d"=" -f 2 | sed "s/[\"']//g")
 
 git config --global user.email ${GIT_EMAIL}
 git config --global user.name ${GIT_NAME}

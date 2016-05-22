@@ -12,3 +12,6 @@ pkg/
 
 # travis build directory
 build/
+
+# logs
+.log
