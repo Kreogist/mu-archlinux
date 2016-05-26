@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://kreogist.github.io/Mu/"
 license=('GPL')
 changelog="$pkgname.changelog"
-install="$pkgname.install"
 depends=(
   'pulseaudio'
   'ffmpeg'
